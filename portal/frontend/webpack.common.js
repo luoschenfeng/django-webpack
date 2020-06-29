@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { entryPoints, templatePluginList, rules } = require('./config/webpack')
-const InlineChunkHtmlPlugin = require('./config/inline-chunk-html-plugin')
+const InlineScriptHtmlPlugin = require('./config/inline-script-html-plugin')
 const { alias } = require('./config/alias')
 const context = path.resolve(alias["@"], './pages')
 module.exports = {
@@ -43,6 +43,6 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     ...templatePluginList,
-    new InlineChunkHtmlPlugin()
+    new InlineScriptHtmlPlugin({name: ['runtime']})
   ]
 };

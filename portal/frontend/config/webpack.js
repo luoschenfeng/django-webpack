@@ -114,34 +114,34 @@ let rules =  [
       },
     ],
   },
-  // {
-  //   test: /\.html$/i,
-  //   use: [
-  //     {
-  //       loader: 'html-loader',
-  //       options: {
-  //         // Disables attributes processing
-  //         // attributes: false,
-  //         attributes: {
-  //           list: [
-  //             {
-  //               // Tag name
-  //               tag: 'img',
-  //               // Attribute name
-  //               attribute: 'src',
-  //               // Type of processing, can be `src` or `scrset`
-  //               type: 'src',
-  //             },
-  //           ],
-  //         },
-  //         minimize: {
-  //           removeComments: false,
-  //         },
-  //       },
-  //     },
-  //     // {loader: 'ejs-loader'}
-  //   ]
-  // },
+  {
+    test: /\.html$/i,
+    use: [
+      {
+        loader: 'html-loader',
+        options: {
+          // Disables attributes processing
+          // attributes: false,
+          esModule: true,
+          attributes: {
+            list: [
+              {
+                // Tag name
+                tag: 'img',
+                // Attribute name
+                attribute: 'src',
+                // Type of processing, can be `src` or `scrset`
+                type: 'src',
+              },
+            ],
+          },
+          minimize: {
+            removeComments: false,
+          },
+        },
+      },
+    ]
+  },
 ]
 module.exports = {
   entryPoints,
