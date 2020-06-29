@@ -7,4 +7,4 @@ node_modules
 yarn*
 
 dist/
-__pycache__
+__pycache__/
