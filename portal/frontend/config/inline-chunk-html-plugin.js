@@ -1,27 +1,27 @@
 // If your plugin is direct dependent to the html webpack plugin:
 const HtmlWebpackPlugin = require('html-webpack-plugin')
  
-class MyPlugin {
-  apply (compiler) {
-    compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
-      console.log('The compiler is starting a new compilation...')
+// class MyPlugin {
+//   apply (compiler) {
+//     compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
+//       console.log('The compiler is starting a new compilation...')
  
-      // Staic Plugin interface |compilation |HOOK NAME | register listener 
-      HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
-        'MyPlugin', // <-- Set a meaningful name here for stacktraces
-        (data, cb) => {
-          // Manipulate the content
-          data.html += 'The Magic Footer'
-          console.log(cb)
-          // Tell webpack to move on
-          cb(null, data)
-        }
-      )
-    })
-  }
-}
+//       // Staic Plugin interface |compilation |HOOK NAME | register listener 
+//       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
+//         'MyPlugin', // <-- Set a meaningful name here for stacktraces
+//         (data, cb) => {
+//           // Manipulate the content
+//           data.html += 'The Magic Footer'
+//           console.log(cb)
+//           // Tell webpack to move on
+//           cb(null, data)
+//         }
+//       )
+//     })
+//   }
+// }
  
-module.exports = MyPlugin
+// module.exports = MyPlugin
 
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -34,7 +34,7 @@ module.exports = MyPlugin
 
 class InlineChunkHtmlPlugin {
   constructor(htmlWebpackPlugin, tests) {
-    this.htmlWebpackPlugin = htmlWebpackPlugin;
+    // this.htmlWebpackPlugin = htmlWebpackPlugin;
     this.tests = tests;
   }
 
@@ -62,13 +62,18 @@ class InlineChunkHtmlPlugin {
     }
 
     compiler.hooks.compilation.tap('InlineChunkHtmlPlugin', compilation => {
-      const tagFunction = tag =>
-        this.getInlinedTag(publicPath, compilation.assets, tag);
+      const tagFunction = tag => {
+        console.log(publicPath)
+        console.log(compilation.assets)
+        console.log(tag)
 
-      const hooks = this.htmlWebpackPlugin.getHooks(compilation);
-      hooks.alterAssetTagGroups.tap('InlineChunkHtmlPlugin', assets => {
-        assets.headTags = assets.headTags.map(tagFunction);
-        assets.bodyTags = assets.bodyTags.map(tagFunction);
+        this.getInlinedTag(publicPath, compilation.assets, tag);
+      }
+
+      
+        HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tap('InlineChunkHtmlPlugin', (headTags, outputName) => {
+        headTags.headTags = headTags.headTags.map(tagFunction);
+        headTags.bodyTags = headTags.bodyTags.map(tagFunction);
       });
 
       // Still emit the runtime chunk for users who do not use our generated
