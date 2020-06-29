@@ -3,8 +3,8 @@ migrations
 __init__.py
 
 #html
-Pubilc/
-Template/
 node_modules
 yarn*
 
+dist/
+__pycache__
