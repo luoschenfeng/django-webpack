@@ -49,3 +49,17 @@ STATIC_URL = '/static/'
 'BACKEND': 'django.template.backends.django.DjangoTemplates',
 'DIRS': [os.path.join(BASE_DIR, 'dist/templates')],
 ```
+
+- 未完成但计划要完成的（优先级排序）
+
+* webpack-dev-server
+
+* js及模板的mock配置
+
+* css 等其他文件的loader
+
+* js及模板的环境变量
+
+* js及模板的lang(支持不同语言)
+
+* 打包上传oss
