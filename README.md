@@ -20,7 +20,7 @@
 
     - cd django-webpack/portal/frontend && yarn
 
-  - 启动环境（目前只有 watch）
+    - 启动环境（watch, dev-server(模板文件的修改需要手动刷新)）
 
     - yarn watch
 
@@ -50,9 +50,7 @@ STATIC_URL = '/static/'
 'DIRS': [os.path.join(BASE_DIR, 'dist/templates')],
 ```
 
-- 未完成但计划要完成的（优先级排序）
-
-* webpack-dev-server
+## 未完成但计划要完成的（优先级排序）
 
 * js及模板的mock配置
 
