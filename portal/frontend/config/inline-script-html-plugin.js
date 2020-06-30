@@ -1,27 +1,6 @@
 // If your plugin is direct dependent to the html webpack plugin:
 const HtmlWebpackPlugin = require('html-webpack-plugin')
  
-// class MyPlugin {
-//   apply (compiler) {
-//     compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
- 
-//       // Staic Plugin interface |compilation |HOOK NAME | register listener 
-//       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
-//         'MyPlugin', // <-- Set a meaningful name here for stacktraces
-//         (data, cb) => {
-//           console.log(data.html)
-//           // Manipulate the content
-//           data.html += 'The Magic Footer'
-//           // Tell webpack to move on
-//           cb(null, data)
-//         }
-//       )
-//     })
-//   }
-// }
- 
-// module.exports = MyPlugin
-
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
  *
@@ -34,7 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 class InlineScriptHtmlPlugin {
   /**
    * 
-   * @param {object} tests 
+   * @param {object} [tests] 
    * @param {string[]} tests.name 
    */
   constructor(tests) {
@@ -77,16 +56,6 @@ class InlineScriptHtmlPlugin {
       HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tap(
         'InlineScriptHtmlPlugin',
         assets => {
-          console.log(assets.bodyTags)
-          console.log('哈哈哈')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
-          console.log('\n')
           assets.bodyTags = assets.bodyTags.map(tagFunction);
         }
       )

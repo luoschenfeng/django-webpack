@@ -1,8 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { entryPoints, templatePluginList, rules } = require('./config/webpack')
 const InlineScriptHtmlPlugin = require('./config/inline-script-html-plugin')
+const injectJsPlugin = require('./config/inject-js-plugin')
 const { alias } = require('./config/alias')
 const context = path.resolve(alias["@"], './pages')
 module.exports = {
@@ -28,6 +29,14 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
+          name: (module, chunks, cacheGroupKey) => {
+            let moduleFileName = module.identifier().split('/').reduceRight(item => item);
+            const moduleFileNameSplit = moduleFileName.split('.')
+            if (moduleFileNameSplit[1] === 'js') {
+              moduleFileName = moduleFileNameSplit[0]
+            }
+            return `module/${moduleFileName}`;
+          },
           filename: 'js/modules/[name].js?[contenthash]'
         },
       }
@@ -41,8 +50,9 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     ...templatePluginList,
-    new InlineScriptHtmlPlugin({name: ['runtime']})
+    new InlineScriptHtmlPlugin(),
+    new injectJsPlugin()
   ]
 };
