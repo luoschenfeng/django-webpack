@@ -54,10 +54,14 @@ STATIC_URL = '/static/'
 
 * js及模板的mock配置
 
-* css 等其他文件的loader
-
 * js及模板的环境变量
+
+* css等其他文件的loader
+
+* eslint
 
 * js及模板的lang(支持不同语言)
 
 * 打包上传oss
+
+* 单元测试
