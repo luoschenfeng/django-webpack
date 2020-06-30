@@ -19,8 +19,33 @@
   - 安装依赖
 
     - cd django-webpack/portal/frontend && yarn
-  
-  - 启动环境（目前只有watch）
+
+  - 启动环境（目前只有 watch）
 
     - yarn watch
 
+## 后端 setting
+
+- 静态文件
+
+```
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, "dist"),
+]
+
+STATIC_URL = '/static/'
+```
+
+- 静态文件路由
+
+```
+
+STATIC_URL = '/static/'
+```
+
+- 模板文件
+
+```
+'BACKEND': 'django.template.backends.django.DjangoTemplates',
+'DIRS': [os.path.join(BASE_DIR, 'dist/templates')],
+```
