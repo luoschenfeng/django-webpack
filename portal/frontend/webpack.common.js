@@ -13,8 +13,8 @@ module.exports = {
     hashFunction: 'sha512',
     hashDigest: 'base64',
     hashDigestLength: 7,
-    // filename: 'js/pages/[name].js?[contenthash]',
-    filename: 'js/pages/[name].js?[contenthash]',
+    // filename: 'js/pages/[name].js?[hash]',
+    filename: 'js/pages/[name].js?[hash]',
     path: alias.frontDestination,
     publicPath: "/static/",
   },
@@ -37,7 +37,7 @@ module.exports = {
             }
             return `module/${moduleFileName}`;
           },
-          filename: 'js/modules/[name].js?[contenthash]'
+          filename: 'js/modules/[name].js?[hash]'
         },
       }
     },

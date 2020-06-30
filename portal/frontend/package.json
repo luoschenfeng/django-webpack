@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo 1",
     "build:prod": "webpack --config webpack.prod.js",
-    "server": "webpack-dev-server --open --config webpack.dev.js",
+    "server": "webpack-dev-server --config webpack.dev.js --open --hot --inline",
     "watch": "webpack --config webpack.watch.js --watch"
   },
   "devDependencies": {
