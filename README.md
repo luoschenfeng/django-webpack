@@ -6,34 +6,38 @@
 
 - 后端
 
+  - 进入虚拟环境（退出 deactivate）
+
+    - source virtual-env/bin/activate
+
   - 安装依赖
 
     - pip3 install -r requirements.txt
 
   - 启动服务
 
-    - cd django-webpack/portal/ && pathon3 manage.py runserver
+    - cd django-webpack/project/ && pathon3 manage.py runserver
 
 - 前端
 
   - 安装依赖
 
-    - cd django-webpack/portal/frontend && yarn
+    - cd django-webpack/projetc/frontend && yarn
 
-    - 启动环境（watch, dev-server(模板文件的修改需要手动刷新)）
+  - 启动环境(watch, dev-server)
 
     - yarn watch
 
-## 后端 setting
+    - yarn server (模板文件的修改需要手动刷新)
 
-- 静态文件
+## 后端 setting.py 配置
+
+- 静态文件查询目录
 
 ```
 STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, "dist"),
+  os.path.join(BASE_DIR, "frontend/dist"),
 ]
-
-STATIC_URL = '/static/'
 ```
 
 - 静态文件路由
@@ -43,25 +47,25 @@ STATIC_URL = '/static/'
 STATIC_URL = '/static/'
 ```
 
-- 模板文件
+- 模板文件查询目录
 
 ```
 'BACKEND': 'django.template.backends.django.DjangoTemplates',
-'DIRS': [os.path.join(BASE_DIR, 'dist/templates')],
+'DIRS': [os.path.join(BASE_DIR, 'frontend/dist/templates')],
 ```
 
 ## 未完成但计划要完成的（优先级排序）
 
-* js及模板的mock配置
+- js 及模板的 mock 配置
 
-* js及模板的环境变量
+- js 及模板的环境变量
 
-* css等其他文件的loader
+- css 等其他文件的 loader
 
-* eslint
+- eslint
 
-* js及模板的lang(支持不同语言)
+- js 及模板的 lang(支持不同语言)
 
-* 打包上传oss
+- 打包上传 oss
 
-* 单元测试
+- 单元测试
