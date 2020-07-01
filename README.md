@@ -54,11 +54,21 @@ STATIC_URL = '/static/'
 'DIRS': [os.path.join(BASE_DIR, 'frontend/dist/templates')],
 ```
 
+## 说明
+
+- 环境变量
+
+  1. 模板和 js 公用一套环境变量，
+
+  2. 依据 BUILD_ENV 来判断是否为沙箱环境，来启用.env.sandBox
+
+  3. .env(所有模式共同拥有) 、.local.env(本地不被 git 跟踪) 、 .env.{mode}(指定模式下的独有的变量), 同一变量后者会覆盖掉前者, 尽量不要覆盖掉已经指定的环境变量(eg: NODE_ENV)
+
+  4. js 中使用(process.env.AUTHOR) ,模板中使用({{ AUTHOR }}, 甚至{{ NODE_ENV }})
+
 ## 未完成但计划要完成的（优先级排序）
 
 - js 及模板的 mock 配置
-
-- js 及模板的环境变量
 
 - css 等其他文件的 loader
 
