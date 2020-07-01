@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  {% include "./components/header.html" %}
+  {% include "layout/components/header.html" %}
 
   <!-- main域 -->
   {% block main %}
@@ -35,11 +35,11 @@
   {% endblock %}
 
   {% block aside %}
-  {% include "./components/aside.html"%}
+  {% include "layout/components/aside.html"%}
   {% endblock %}
 
   {% block footer %}
-  {% include "./components/footer.html" %}
+  {% include "layout/components/footer.html" %}
   {% endblock %}
 
   <!-- 页面自己的js域 -->
