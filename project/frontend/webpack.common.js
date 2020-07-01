@@ -5,8 +5,9 @@ const { entryPoints: entry, templatePluginList } = require('./config/webpack/mul
 const rules = require('./config/webpack/rules')
 const InlineScriptHtmlPlugin = require('./config/webpack/plugins/inline-script-html-plugin')
 const injectJsPlugin = require('./config/webpack/plugins/inject-js-plugin')
+const injectEnvData = require('./config/webpack/plugins/inject-env-data')
 const { alias } = require('./config/alias')
-const webpackEnvConfig = require('./config/env')
+const { webpackEnvConfig } = require('./config/env')
 const context = path.resolve(alias["@"], './pages')
 module.exports = {
   context: context,
@@ -57,9 +58,10 @@ module.exports = {
     ...templatePluginList,
     // new InlineScriptHtmlPlugin(),
     new injectJsPlugin(),
+    new injectEnvData(),
     new webpack.DefinePlugin({
       ...webpackEnvConfig
     })
   ],
-  stats: 'errors-only'
+  // stats: 'errors-only'
 };

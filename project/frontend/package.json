@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "test": "echo 1",
-    "build:production": "webpack --config webpack.prod.js ",
-    "build:sandbox": "webpack --config webpack.prod.js --env.BUILD_ENV=sandbox",
-    "server": "webpack-dev-server --config webpack.dev.js   --color --open --hot --inline",
-    "watch": "webpack --config webpack.watch.js --watch"
+    "build:production": "cross-env  NODE_ENV=production  webpack --config webpack.prod.js ",
+    "build:sandbox": "cross-env  NODE_ENV=production  BUILD_ENV=sandbox webpack --config webpack.prod.js ",
+    "server": "cross-env  NODE_ENV=development  webpack-dev-server --config webpack.dev.js   --color --open --hot --inline",
+    "watch": "cross-env  NODE_ENV=development  webpack --config webpack.watch.js --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -18,6 +18,7 @@
     "@types/node": "^14.0.14",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.0.0",
@@ -33,6 +34,7 @@
     "dotenv": "^8.2.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
-    "require-context": "^1.1.0"
+    "require-context": "^1.1.0",
+    "swig": "^1.4.2"
   }
 }
