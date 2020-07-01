@@ -68,6 +68,8 @@ STATIC_URL = '/static/'
 
 ## 代码分层
 
+```
+
 ├── README.md
 ├── project
 │   ├── frontend // 前端项目
@@ -126,6 +128,8 @@ STATIC_URL = '/static/'
 │   └── record
 ├── requirements.txt
 ├── virtual-env
+
+```
 
 ## 未完成但计划要完成的（优先级排序）
 
