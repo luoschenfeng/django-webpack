@@ -66,11 +66,74 @@ STATIC_URL = '/static/'
 
   4. js 中使用(process.env.AUTHOR) ,模板中使用({{ AUTHOR }}, 甚至{{ NODE_ENV }})
 
+## 代码分层
+
+├── README.md
+├── project
+│   ├── frontend // 前端项目
+│   │   ├── config // 配置
+│   │   │   ├── alias.js // 别名配置
+│   │   │   ├── env.js // 环境配置变量
+│   │   │   ├── lang.js // lang配置
+│   │   │   ├── mock.js // mock配置
+│   │   │   ├── oss.js  // oss配置
+│   │   │   ├── units.js  // 其他工具
+│   │   │   └── webpack  // webpack 配置文件夹
+│   │   │   │   ├── multi-entry-template.js // 生成多入口多模板
+│   │   │   │   ├── plugins  // 用到的插件
+│   │   │   │   │   ├── inject-env-data.js  // 插入环境变量到模板
+│   │   │   │   │   ├── inject-js-plugin.js  // 插入chunks到指定域中
+│   │   │   │   │   └── inline-script-html-plugin.js  // 用标签在html中插入脚本内容，指定chunk名称
+│   │   │   │   └── rules.js  // module.ules
+│   │   ├── dist  // 打包后的文件，供后端使用
+│   │   │   ├── assets  // 静态资源
+│   │   │   │   └── images
+│   │   │   │   └── style
+│   │   │   ├── js  // js 资源
+│   │   │   │   ├── modules  // 拆分的依赖包
+│   │   │   │   └── pages  // 各页面的js
+│   │   │   ├── templates // 打包后的后端模板
+│   │   ├── env  // 环境变量
+│   │   ├── mock  // mock文件夹
+│   │   │   ├── ajax
+│   │   │   └── template
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── api
+│   │   │   ├── assets
+│   │   │   │   └── images
+│   │   │   ├── lang
+│   │   │   │   └── zh
+│   │   │   │   ├── js
+│   │   │   │   └── template
+│   │   │   ├── pages 
+│   │   │   ├── style
+│   │   │   ├── templates
+│   │   │   ├── utils
+│   │   │   │   └── index.js
+│   │   ├── tests
+│   │   ├── webpack.common.js
+│   │   ├── webpack.dev.js
+│   │   ├── webpack.prod.js
+│   │   ├── webpack.watch.js
+│   │   ├── yarn-error.log
+│   │   └── yarn.lock
+│   ├── manage.py
+│   ├── project
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   ├── views.py
+│   └── record
+├── requirements.txt
+├── virtual-env
+
 ## 未完成但计划要完成的（优先级排序）
 
 - js 及模板的 mock 配置
 
 - css 等其他文件的 loader
+
+- build 优化
 
 - eslint
 
