@@ -42,7 +42,7 @@ class injectJsPlugin {
           const pattern = new RegExp(`${this.scope.leftSign}(${this.scope.scopeText ? this.scope.scopeText : '\\\s*'})${this.scope.rightSign}`);
           if (pattern.test(data.html)) {
             let matches = pattern.exec(data.html)
-            data.html = data.html.slice(0, matches.index) + this.scope.leftSign + this.createScriptScope(bodyTagList) + this.scope.rightSign + data.html.slice(matches.index + matches[0].length)
+            data.html = data.html.replace(matches[0], this.scope.leftSign + this.createScriptScope(bodyTagList) + this.scope.rightSign)
           }
 
           // Manipulate the content
