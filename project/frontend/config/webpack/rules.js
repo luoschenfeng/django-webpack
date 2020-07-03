@@ -52,7 +52,6 @@ module.exports = [
         options: {
           // Disables attributes processing
           // attributes: false,
-          esModule: true,
           attributes: {
             list: [
               {

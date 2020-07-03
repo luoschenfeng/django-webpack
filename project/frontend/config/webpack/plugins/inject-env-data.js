@@ -4,7 +4,7 @@ const { envObj } = require('../../env')
 const swig  = require('swig')
 const merge = require('lodash/merge')
  
-class injectEnvData {
+class InjectEnvData {
   /**
    * 
    * @param {object} [globalEnv]
@@ -14,11 +14,11 @@ class injectEnvData {
   }
 
   apply (compiler) {
-    compiler.hooks.compilation.tap('injectEnvData', (compilation) => {
+    compiler.hooks.compilation.tap('InjectEnvData', (compilation) => {
  
       // Staic Plugin interface |compilation |H OOK NAME | register listener 
       HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tapAsync(
-        'injectEnvData', // <-- Set a meaningful name here for stacktraces
+        'InjectEnvData', // <-- Set a meaningful name here for stacktraces
         (data, cb) => {
           data.html = swig.render(data.html, { 
             locals: merge(this.globalEnv, envObj, process.env), 
@@ -38,4 +38,4 @@ class injectEnvData {
   }
 }
  
-module.exports = injectEnvData
+module.exports = InjectEnvData
