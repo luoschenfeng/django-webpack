@@ -28,7 +28,7 @@
 
     - yarn watch
 
-    - yarn server (模板文件的修改需要手动刷新)
+    - yarn server
 
 ## 后端 setting.py 配置
 
