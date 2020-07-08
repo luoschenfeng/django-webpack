@@ -8,7 +8,7 @@
     "test": "echo 1",
     "build:production": "cross-env  NODE_ENV=production  webpack --config webpack.prod.js ",
     "build:sandbox": "cross-env  NODE_ENV=production  BUILD_ENV=sandbox webpack --config webpack.prod.js ",
-    "server": "cross-env  NODE_ENV=development  webpack-dev-server --config webpack.dev.js   --color --open --hot --inline",
+    "server": "cross-env  NODE_ENV=development  webpack-dev-server --config webpack.dev.js   --color --open --inline",
     "watch": "cross-env  NODE_ENV=development  webpack --config webpack.watch.js --watch"
   },
   "devDependencies": {
@@ -24,8 +24,8 @@
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "inject-js-plugin": "^1.0.0",
-    "inline-script-html-plugin": "^1.0.0",
+    "inject-js-plugin": "1.2.0",
+    "inline-script-html-plugin": "1.1.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",

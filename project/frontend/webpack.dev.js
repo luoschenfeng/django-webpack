@@ -9,6 +9,7 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: alias.frontDestination,
+    liveReload: true,
     publicPath: '/static/',
     writeToDisk: true,
     port: 8080,
