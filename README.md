@@ -135,7 +135,7 @@ STATIC_URL = '/static/'
 
 - js 及模板的 mock 配置
 
-- css 等其他文件的 loader
+- 添加 loader（css 的有关 loader 已经添加）
 
 - build 优化
 
