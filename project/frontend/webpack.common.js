@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { entryPoints: entry, templatePluginList } = require('./config/webpack/multi-entry-template')
 const rules = require('./config/webpack/rules')
 const InlineScriptHtmlPlugin = require('inline-script-html-plugin')

@@ -1,0 +1,18 @@
+$breakPointsMap: (
+  // 'xs': (min-width: 0px), // [0:768) px 移动端优先
+  'sm': (min-width: 768px), // [768: 992) px
+  'md': (min-width: 992px), // [992: 1200) px
+  'lg': (min-width: 1200px), // [1200: 1920) px
+  'xl': (min-width: 1920px), // [1920] px
+);
+
+@mixin  mediaQuery ($breakPoint, $breakPointsMap: $breakPointsMap ) {
+
+  $value: map-has-key($breakPointsMap, $breakPoint);
+
+  @if ($value != null) {
+    @media screen and  #{ inspect( map-get($breakPointsMap, $breakPoint) ) } {
+      @content
+    }
+  };
+}

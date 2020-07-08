@@ -1,0 +1,18 @@
+@import "../../_Base/media-query";
+
+.footer-container {
+  color: #23e;
+  
+}
+@include mediaQuery("sm") {
+  .footer-container {
+    color: red;
+    transform: scaleY(1);
+  }
+}
+
+@include mediaQuery("md") {
+  .footer-container {
+    color: blue;
+  }
+}

@@ -12,7 +12,7 @@ module.exports = merge(common, {
     liveReload: true,
     publicPath: '/static/',
     writeToDisk: true,
-    port: 8080,
+    port: 2020,
     host: '0.0.0.0',
     proxy: {
       '*': 'http://localhost:8000 '
