@@ -1,7 +1,7 @@
 @import "../../_Base/media-query";
 
 .footer-container {
-  color: #23e;
+  color: #eee;
   
 }
 @include mediaQuery("sm") {
@@ -13,6 +13,6 @@
 
 @include mediaQuery("md") {
   .footer-container {
-    color: blue;
+    color: black;
   }
 }

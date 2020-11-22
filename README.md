@@ -1,6 +1,6 @@
 # django-webpack
 
-- python3 的 django 模板 与 前端 webpack(4/5)打包的解决方案
+- django 3.0 模板 与 前端 webpack5打包的解决方案
 
 ## 环境
 
@@ -16,7 +16,7 @@
 
   - 启动服务
 
-    - cd django-webpack/project/ && pathon3 manage.py runserver
+    - cd django-webpack/project/ && python3 manage.py runserver
 
 - 前端
 
@@ -28,7 +28,7 @@
 
     - yarn watch
 
-    - yarn server
+    - yarn dev
 
 ## 后端 setting.py 配置
 
@@ -146,3 +146,5 @@ STATIC_URL = '/static/'
 - 打包上传 oss
 
 - 单元测试
+
+## 升级到webpack5后 live reload不可用

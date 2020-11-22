@@ -1,4 +1,3 @@
-const  MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = [
   {
     test: /\.m?js$/,
@@ -51,7 +50,7 @@ module.exports = [
         
       }, 
 
-      'extract-loader',
+      "extract-loader",
       // Translates CSS into CommonJS
       {
         loader: 'css-loader',

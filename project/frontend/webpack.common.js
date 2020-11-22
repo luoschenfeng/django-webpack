@@ -1,10 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { entryPoints: entry, templatePluginList } = require('./config/webpack/multi-entry-template')
 const rules = require('./config/webpack/rules')
-const InlineScriptHtmlPlugin = require('inline-script-html-plugin')
+// const InlineScriptHtmlPlugin = require('inline-script-html-plugin')
 const InjectJsPlugin = require('inject-js-plugin')
 const InjectEnvData = require('./config/webpack/plugins/inject-env-data')
 const { alias } = require('./config/alias')
@@ -26,7 +26,7 @@ module.exports = {
     alias,
   },
   optimization: {
-    moduleIds: 'hashed',
+    moduleIds: 'deterministic',
     runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
@@ -62,7 +62,7 @@ module.exports = {
     new InjectEnvData(),
     new webpack.DefinePlugin({
       ...webpackEnvConfig
-    })
+    }),
   ],
-  // stats: 'errors-only'
+  stats: 'errors-only'
 };

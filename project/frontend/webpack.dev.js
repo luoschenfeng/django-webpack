@@ -7,48 +7,30 @@ const { alias } = require('./config/alias')
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
+  target: 'web',
   devServer: {
-    contentBase: alias.frontDestination,
-    liveReload: true,
     publicPath: '/static/',
+    contentBase: alias.frontDestination,
+    // hot: true,
+    watchContentBase: true,
+    liveReload: true,
     writeToDisk: true,
-    port: 2020,
+    open: true,
+    port: 2024,
     host: '0.0.0.0',
     proxy: {
       '*': 'http://localhost:8000 '
     },
     allowedHosts: [
       'localhost',
-    ]
+    ],
+    onListening(server) {
+      const port = server.listeningApp.address().port;
+      console.log('Listening on port:', port);
+    },
+    overlay: true
   },
   output: {
-    hashFunction: 'sha512',
-    hashDigest: 'base64',
-    hashDigestLength: 7,
-    // filename: 'js/pages/[name].js?[hash]',
-    filename: 'js/pages/[name].js?[hash]',
-    path: alias.frontDestination,
-    publicPath: "/static/",
-  },
-  optimization: {
-    moduleIds: 'hashed',
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: (module, chunks, cacheGroupKey) => {
-            let moduleFileName = module.identifier().split('/').reduceRight(item => item);
-            const moduleFileNameSplit = moduleFileName.split('.')
-            if (moduleFileNameSplit[1] === 'js') {
-              moduleFileName = moduleFileNameSplit[0]
-            }
-            return `module/${moduleFileName}`;
-          },
-          filename: 'js/modules/[name].js?[hash]'
-        },
-      }
-    },
+    filename: 'js/pages/[name].js?[fullhash]',
   },
 });
